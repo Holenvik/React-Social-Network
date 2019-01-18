@@ -1,0 +1,68 @@
+.dialog {
+  display: grid;
+  grid-area: d;
+  color: #03A9F4;
+  font-size: 14pt;
+  grid-template-areas:
+    "title title"
+    "person message";
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 4fr 8fr;
+}
+.dialog_title {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  grid-area: title;
+  color: #03A9F4;
+  font-size: 18pt;
+  padding: 0 0 0 20px;
+}
+.dialog_person {
+  grid-area: person;
+  border-right: 4px solid;
+  padding: 0 0 0 20px;
+}
+.dialog_message {
+  grid-area: message;
+  padding: 0 0 0 20px;
+}
+.dialog_person_contact {
+  display: flex;
+  margin: 10px 0;
+}
+.dialog_person_contact img {
+  height: 23%;
+  width: 23%;
+}
+.dialog_person_contact span {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+.contact-active {
+  background-color: #03A9F4;
+  color: #EEEEEE;
+  margin: 0 10px;
+}
+
+.dialog_message_me {
+  display: flex;
+  justify-content: flex-end;
+  margin: px 0;
+}
+.dialog_message_friend {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.dialog_message_me span {
+  background-color: #03A9F4;
+  color: #EEEEEE;
+  line-height: 45px;
+}
+.dialog_message_friend span {
+  background-color: #03A9F4;
+  color: #EEEEEE;
+  line-height: 45px;
+}

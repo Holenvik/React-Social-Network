@@ -1,0 +1,27 @@
+.content__profile {
+  display: flex;
+  justify-content: flex-start;
+}
+.content__profile img {
+  height: auto;
+  width: 100%;
+}
+.profile__photo {
+  height: 250px;
+  width: 250px;
+}
+.profile__info {
+  display: flex;
+  flex-direction: column;
+}
+.profile__add p {
+  margin: 10px auto;
+  color: gray;
+  font-family: Roboto;
+  font-size: 14pt;
+}
+.profile__name {
+  color: gray;
+  font-family: Roboto;
+  font-size: 18pt;
+}

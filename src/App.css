@@ -1,0 +1,21 @@
+* {
+  font-family: Roboto;
+}
+a {
+  text-decoration: none;
+  color: #EEEEEE;
+  font-family: Roboto;
+  font-size: 16pt;
+}
+
+.app-wrapper {
+  display: grid;
+  width: 1200px;
+  margin: 0 auto;
+  grid-template-areas:
+    "h h"
+    "n c";
+  grid-template-rows: 70px 1fr;
+  grid-template-columns: 2fr 10fr;
+  grid-gap: 15px;
+}
