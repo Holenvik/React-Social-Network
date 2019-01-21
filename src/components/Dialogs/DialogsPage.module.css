@@ -1,7 +1,7 @@
 .dialog {
   display: grid;
-  grid-area: d;
-  color: #03A9F4;
+  grid-area: c;
+  color: #03a9f4;
   font-size: 14pt;
   grid-template-areas:
     "title title"
@@ -14,7 +14,7 @@
   justify-content: left;
   align-items: center;
   grid-area: title;
-  color: #03A9F4;
+  color: #03a9f4;
   font-size: 18pt;
   padding: 0 0 0 20px;
 }
@@ -41,8 +41,8 @@
   margin: 0 10px;
 }
 .contact-active {
-  background-color: #03A9F4;
-  color: #EEEEEE;
+  background-color: #03a9f4;
+  color: #eeeeee;
   margin: 0 10px;
 }
 
@@ -57,12 +57,12 @@
 }
 
 .dialog_message_me span {
-  background-color: #03A9F4;
-  color: #EEEEEE;
+  background-color: #03a9f4;
+  color: #eeeeee;
   line-height: 45px;
 }
 .dialog_message_friend span {
-  background-color: #03A9F4;
-  color: #EEEEEE;
+  background-color: #03a9f4;
+  color: #eeeeee;
   line-height: 45px;
 }

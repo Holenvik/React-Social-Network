@@ -4,6 +4,7 @@ import MyPosts from "./MyPosts/Post/Post";
 import Info from "./MyInfo/Info";
 
 const Profile = ({ contact, posts }) => {
+  console.log(contact);
   return (
     <div className={profile.content}>
       <div className={profile.content__title}>

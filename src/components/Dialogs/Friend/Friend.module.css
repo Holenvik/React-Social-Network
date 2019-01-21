@@ -1,7 +1,11 @@
+a {
+  text-decoration: none;
+  color: #03a9f4;
+}
 .dialog {
   display: grid;
   grid-area: d;
-  color: #03A9F4;
+  color: #03a9f4;
   font-size: 14pt;
   grid-template-areas:
     "title title"
@@ -14,7 +18,7 @@
   justify-content: left;
   align-items: center;
   grid-area: title;
-  color: #03A9F4;
+  color: #03a9f4;
   font-size: 18pt;
   padding: 0 0 0 20px;
 }
@@ -29,11 +33,15 @@
 }
 .dialog_person_contact {
   display: flex;
-  margin: 10px 0;
+  margin: 10px 15px 0 0;
+}
+.dialog_person_contact:hover{
+  color: #eeeeee;
+  background-color: #90CAF9;
 }
 .dialog_person_contact img {
-  height: 23%;
-  width: 23%;
+  height: 80px;
+  width: 80px;
 }
 .dialog_person_contact span {
   display: flex;
@@ -41,8 +49,8 @@
   margin: 0 10px;
 }
 .contact-active {
-  background-color: #03A9F4;
-  color: #EEEEEE;
+  background-color: #03a9f4;
+  color: #eeeeee;
   margin: 0 10px;
 }
 
@@ -57,12 +65,16 @@
 }
 
 .dialog_message_me span {
-  background-color: #03A9F4;
-  color: #EEEEEE;
+  background-color: #03a9f4;
+  color: #eeeeee;
   line-height: 45px;
 }
 .dialog_message_friend span {
-  background-color: #03A9F4;
-  color: #EEEEEE;
+  background-color: #03a9f4;
+  color: #eeeeee;
   line-height: 45px;
 }
+/* .active img{
+  height: 200px;
+  width: 200px;
+} */

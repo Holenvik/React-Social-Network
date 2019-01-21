@@ -2,7 +2,15 @@ import React, { Component } from "react";
 import dialog from "./DialogsPage.module.css";
 import Friend from "./Friend/Friend";
 
-const DialogsPage = ({props}) => {
+const Message = ({message}) => {
+  return (
+    <div className={dialog.dialog_message_me}>
+      <span>COAJSHDJKAHSDJJK</span>
+    </div>
+  );
+};
+
+const DialogsPage = ({ props }) => {
   return (
     <div className={dialog.dialog}>
       <div className={dialog.dialog_title}>Dialogs</div>
@@ -23,9 +31,7 @@ const DialogsPage = ({props}) => {
         </div> */}
       </div>
       <div className="dialog_message">
-        <div className="dialog_message_me">
-          <span>COAJSHDJKAHSDJJK</span>
-        </div>
+        <Message />
         <div className="dialog_message_friend">
           <span>ASD:NKJDSFHBJKHSDF</span>
         </div>
