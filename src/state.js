@@ -1,6 +1,13 @@
 import React from "react";
 
 let state = {
+  navbar: [
+    { name: "Profile", link: "/profile" },
+    { name: "Message", link: "/message" },
+    { name: "News", link: "/news" },
+    { name: "Music", link: "/music" },
+    { name: "Settings", link: "/settings" }
+  ],
   dialogs: [
     {
       id: 1,

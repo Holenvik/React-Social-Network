@@ -1,19 +1,27 @@
 import React, { Component } from "react";
 import Navbar from "./Navbar.module.css";
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-const NavbarItem = () =>{
-  // И тут нужно будет замапить
-}
+const NavbarItem = props => {
+  return (
+    <div className={`${Navbar.nav__link} ${Navbar.active}`}>
+      <NavLink to="/news">{props.name}</NavLink>
+    </div>
+  );
+};
 
-const Nav = () => {
+const Nav = props => {
+  // debugger;
+  let { navbar } = props;
+  console.log(navbar);
+  let NavList = navbar.map(el => <NavbarItem item={el.name} link={el.link} />);
   return (
     <nav className={Navbar.nav}>
       <div className={`${Navbar.nav__link} ${Navbar.profile}`}>
-        <NavLink  to="/profile">Profile</NavLink>
+        <NavList />
       </div>
       <div className={Navbar.nav__link}>
-        <NavLink to="/message">Message</NavLink>
+        <NavLink to="/message">{NavbarItem}</NavLink>
       </div>
       <div className={`${Navbar.nav__link} ${Navbar.active}`}>
         <NavLink to="/news">News</NavLink>
