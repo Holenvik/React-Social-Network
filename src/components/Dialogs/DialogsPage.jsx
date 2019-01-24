@@ -10,7 +10,7 @@ const Message = ({message}) => {
   );
 };
 
-const DialogsPage = ({ props }) => {
+const DialogsPage = (props) => {
   return (
     <div className={dialog.dialog}>
       <div className={dialog.dialog_title}>Dialogs</div>

@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import Navbar from "./Navbar.module.css";
 import {NavLink} from "react-router-dom";
 
+const NavbarItem = () =>{
+  // И тут нужно будет замапить
+}
+
 const Nav = () => {
   return (
     <nav className={Navbar.nav}>

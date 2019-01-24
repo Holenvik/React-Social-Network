@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 
 const DialogItem = ({ name, id }) => {
   let path = "/message/" + id;
-
   return (
     <NavLink to={path}>
       <div className={friend.dialog_person_contact}>
