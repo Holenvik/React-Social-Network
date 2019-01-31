@@ -1,39 +1,46 @@
 import React, { Component } from "react";
-import Navbar from "./Navbar.module.css";
+import n from "./Navbar.module.css";
 import { NavLink } from "react-router-dom";
+import PropTypes from "prop-types";
 
-const NavbarItem = props => {
+const NavList = props => {
+  let { item, link } = props;
   return (
-    <div className={`${Navbar.nav__link} ${Navbar.active}`}>
-      <NavLink to="/news">{props.name}</NavLink>
+    <div className={n.nav__link}>
+      <NavLink to={link} activeClassName={n.active} exact>
+        {item}
+      </NavLink>
+    </div>
+  );
+};
+const FriendsList = props => {
+  let { name, picture } = props;
+  return (
+    <div className={n.friendItem}>
+      <img src={picture} alt="friend" />
+      <p>{name}</p>
     </div>
   );
 };
 
-const Nav = props => {
-  // debugger;
-  let { navbar } = props;
-  console.log(navbar);
-  let NavList = navbar.map(el => <NavbarItem item={el.name} link={el.link} />);
+const Nav = ({ navbar, friends }) => {
+  let NavItems = navbar.map(el => <NavList item={el.name} link={el.link} />);
+  let FriendItem = friends.map(el => (
+    <FriendsList name={el.name} picture={el.picture} />
+  ));
   return (
-    <nav className={Navbar.nav}>
-      <div className={`${Navbar.nav__link} ${Navbar.profile}`}>
-        <NavList />
-      </div>
-      <div className={Navbar.nav__link}>
-        <NavLink to="/message">{NavbarItem}</NavLink>
-      </div>
-      <div className={`${Navbar.nav__link} ${Navbar.active}`}>
-        <NavLink to="/news">News</NavLink>
-      </div>
-      <div className={Navbar.nav__link}>
-        <NavLink to="/music">Music</NavLink>
-      </div>
-      <div className={`${Navbar.nav__link} ${Navbar.settings}`}>
-        <NavLink to="/settings">Settings</NavLink>
+    <nav className={n.nav}>
+      {NavItems}
+      <p>Friends:</p>
+      <div className={n.nav__friends}>
+        {FriendItem}
       </div>
     </nav>
   );
+};
+
+Nav.propTypes = {
+  navbar: PropTypes.array
 };
 
 export default Nav;

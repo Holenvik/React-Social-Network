@@ -8,18 +8,15 @@ import { Route, BrowserRouter } from "react-router-dom";
 
 const App = props => {
   let { items } = props;
-  let { profile, posts, navbar } = items;
-  console.log(navbar);
+  let { profile, navbar, friends } = items;
   return (
     <BrowserRouter>
       <div className="app-wrapper">
         <Head />
-        <Nav navbar={navbar} />
-        {/* <DialogsPage /> */}
-        {/* <Route component={DialogsPage} /> */}
+        <Nav navbar={navbar} friends = {friends} />
         <Route
           path="/profile"
-          render={() => <Profile contact={profile} posts={posts} />}
+          render={() => <Profile contact={profile} />}
         />
         <Route exact path="/message" render={() => <DialogsPage />} />
       </div>

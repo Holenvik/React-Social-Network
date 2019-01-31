@@ -10,19 +10,46 @@
   text-decoration: none;
   color: #eeeeee;
   font-family: Roboto;
+  font-size: 22pt;
+}
+.nav p{
+  color: #eeeeee;
+  font-family: Roboto;
   font-size: 16pt;
 }
 .nav__link {
   margin: 6px 0;
-}
-
-.profile{
   color: #eeeeee;
+}
+.nav__link:first-child {
   margin: 20px 0;
 }
-.settings {
+
+.nav__link:last-child {
   margin: 40px 0;
 }
-.active a {
-  color: #90CAF9;
+
+.nav__link .active{
+  color: #90caf9;
+}
+
+.nav__friends{
+  display: flex;
+  flex-direction: column;
+}
+.friendItem{
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+.friendItem img{
+  height: 75px;
+  width: 75px;
+}
+.friendItem p{
+  margin: 0;
+  color: #eeeeee;
+  font-family: Roboto;
+  font-size: 14pt;
+  text-align: center;
 }

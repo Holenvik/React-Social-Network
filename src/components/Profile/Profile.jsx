@@ -3,7 +3,9 @@ import profile from "./Profile.module.css";
 import MyPosts from "./MyPosts/Post/Post";
 import Info from "./MyInfo/Info";
 
-const Profile = ({ contact, posts }) => {
+const Profile = ({ contact }) => {
+  let {posts} = contact
+  console.log(posts)
   return (
     <div className={profile.content}>
       <div className={profile.content__title}>
@@ -21,7 +23,6 @@ const Profile = ({ contact, posts }) => {
           </button>
         </div>
         <div className={profile.post__added}>
-          <MyPosts posts={posts} picture={contact.picture} />
           <MyPosts posts={posts} picture={contact.picture} />
         </div>
       </div>
