@@ -15,7 +15,6 @@ const PostItems = ({ post, picture }) => {
 };
 
 const MyPosts = ({ posts, picture }) => {
-  console.log(posts)
   let Post = posts.map(el => <PostItems post={el.message} picture={picture} />);
   return <div className={Post.post}>{Post}</div>;
 };

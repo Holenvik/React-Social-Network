@@ -66,3 +66,17 @@
   color: #eeeeee;
   line-height: 45px;
 }
+.dialog_input {
+  display: flex;
+  flex-direction: column;
+}
+.dialog_input_button button {
+  text-align: center;
+  height: 50px;
+  width: 100px;
+  margin: 20px 0;
+  background: #03a9f4;
+  color: #eeeeee;
+  border: 0;
+  font-size: 12pt;
+}
