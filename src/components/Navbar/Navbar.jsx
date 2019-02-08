@@ -24,7 +24,8 @@ const FriendsList = props => {
 };
 
 const Nav = ({ navbar, friends }) => {
-  let NavItems = navbar.map(el => <NavList item={el.name} link={el.link} />);
+  let NavItems = navbar.map(el => <NavList item={el.name}
+                                           link={el.link} />);
   let FriendItem = friends.map(el => (
     <FriendsList name={el.name} picture={el.picture} />
   ));

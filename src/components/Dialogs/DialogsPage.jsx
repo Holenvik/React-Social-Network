@@ -10,6 +10,8 @@ const Message = ({message}) => {
     );
 };
 const DialogsPage = props => {
+
+    debugger;
     let {messages} = props;
     let messageItem = messages.map(el => <Message message={el.content}/>);
     let textMessage = React.createRef();

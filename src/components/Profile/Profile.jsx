@@ -5,13 +5,15 @@ import Info from "./MyInfo/Info";
 
 const Profile = ({contact, ...props}) => {
     // debugger;
-    let {posts} = contact;
+    let {posts, newPostText} = contact;
     let newPostElement = React.createRef();
     let addPost = () => {
-        let text = newPostElement.current.value;
-        props.addPost(text);
-        newPostElement.current.value = "";
+        props.addPost();
     };
+    let onPostText = () => {
+        let text = newPostElement.current.value;
+        props.updatePostText(text);
+    }
     return (
         <div className={profile.content}>
             <div className={profile.content__title}>
@@ -26,6 +28,8 @@ const Profile = ({contact, ...props}) => {
                     className={profile.post__input}
                     type="text"
                     ref={newPostElement}
+                    onChange={onPostText}
+                    value={newPostText}
                 />
                 <div className={profile.post__button}>
                     <button onClick={addPost}>
