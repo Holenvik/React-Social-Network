@@ -4,16 +4,24 @@ import MyPosts from "./MyPosts/Post/Post";
 import Info from "./MyInfo/Info";
 
 const Profile = ({contact, ...props}) => {
-    // debugger;
+    debugger;
     let {posts, newPostText} = contact;
     let newPostElement = React.createRef();
     let addPost = () => {
-        props.addPost();
+        let action = {
+            type: 'ADD-POST'
+        };
+        props.dispatch(action)
     };
     let onPostText = () => {
-        let text = newPostElement.current.value;
-        props.updatePostText(text);
-    }
+        let newText = newPostElement.current.value;
+        let action = {
+            type: 'UPDATE-NEW-POST-TEXT',
+            text: newText
+        };
+        props.dispatch(action);
+    };
+    
     return (
         <div className={profile.content}>
             <div className={profile.content__title}>

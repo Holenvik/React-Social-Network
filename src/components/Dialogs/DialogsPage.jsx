@@ -17,7 +17,13 @@ const DialogsPage = props => {
     let textMessage = React.createRef();
     let newMessage = () => {
         let text = textMessage.current.value;
-        props.addMessage(text);
+        // props.addMessage(text);
+        let action = {
+            type:"ADD-MESSAGE",
+            text: text
+        }
+        props.dispatch(action);
+
         textMessage.current.value = ""
     };
     return (

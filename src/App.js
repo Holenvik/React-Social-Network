@@ -23,12 +23,14 @@ const App = props => {
                 <Route path="/profile"
                        render={() => <Profile
                            contact={profile}
-                           addPost={props.store.addPost.bind(store)}
-                           updatePostText={props.store.updateNewPostText.bind(store)}
+                           // addPost={props.store.addPost.bind(store)}
+                           // updatePostText={props.store.updateNewPostText.bind(store)}
+                           dispatch={props.store.dispatch.bind(store)}
                            newPostText={profile.newPostText}/>}/>
                 <Route exact path="/message"
                        render={() => <DialogsPage
-                           addMessage={props.store.addMessage.bind(store)}
+                           // addMessage={props.store.addMessage.bind(store)}
+                           dispatch={props.store.dispatch.bind(store)}
                            messages={messages}/>}/>
             </div>
         </BrowserRouter>

@@ -103,30 +103,61 @@ export let store = {
 
     },
 
-    addPost() {
-        let newPost = {
-            id: 3,
-            message: this._state.profile.newPostText
-        };
-        this._state.profile.posts.push(newPost);
-        this._state.profile.newPostText = "";
-        this._refresh(this);
+    dispatch(action) {
+        switch (action.type) {
+            case 'ADD-POST':
+                let newPost = {
+                    id: 3,
+                    message: this._state.profile.newPostText
+                };
+                this._state.profile.posts.push(newPost);
+                this._state.profile.newPostText = "";
+                this._refresh(this);
+                break;
+
+            case 'ADD-MESSAGE':
+                let newMessage = {
+                    id: 7,
+                    content: action.text
+                };
+                this._state.messages.push(newMessage);
+                this._refresh(this);
+                break;
+
+            case 'UPDATE-NEW-POST-TEXT':
+                this._state.profile.newPostText = action.text;
+                this._refresh(this);
+                break;
+
+            default:
+                console.log("Something doesnt work inside dispatch, fix it!")
+        }
     },
 
-    addMessage(dialogMessage) {
-        let newMessage = {
-            id: 7,
-            content: dialogMessage
-        };
-        this._state.messages.push(newMessage);
-        debugger;
-        this._refresh(this)
-    },
-    updateNewPostText(newText) {
-        this._state.profile.newPostText = newText;
-        this._refresh(this)
-    },
+
+    // addPost() {
+    //     let newPost = {
+    //         id: 3,
+    //         message: this._state.profile.newPostText
+    //     };
+    //     this._state.profile.posts.push(newPost);
+    //     this._state.profile.newPostText = "";
+    //     this._refresh(this);
+    // },
+    //
+    // addMessage(dialogMessage) {
+    //     let newMessage = {
+    //         id: 7,
+    //         content: dialogMessage
+    //     };
+    //     this._state.messages.push(newMessage);
+    //     debugger;
+    //     this._refresh(this)
+    // },
+    // updateNewPostText(newText) {
+    //     this._state.profile.newPostText = newText;
+    //     this._refresh(this)
+    // },
+
 
 };
-
-
