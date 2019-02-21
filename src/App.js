@@ -8,30 +8,30 @@ import {Route, BrowserRouter} from "react-router-dom";
 
 const App = props => {
     // debugger;
-
-    let {items, store} = props;
-    let {profile, navbar, friends, messages} = items;
+    let {state, store} = props;
+    let {dialogsPage, navbarBlock, profilePage} = state;
     return (
         <BrowserRouter>
             <div className="app-wrapper">
                 <Head/>
 
                 <Nav
-                    navbar={navbar}
-                    friends={friends}/>
+                    navbar={navbarBlock.navbar}
+                    friends={navbarBlock.friends}/>
 
                 <Route path="/profile"
                        render={() => <Profile
-                           contact={profile}
+                           contact={profilePage.profile}
                            // addPost={props.store.addPost.bind(store)}
                            // updatePostText={props.store.updateNewPostText.bind(store)}
-                           dispatch={props.store.dispatch.bind(store)}
-                           newPostText={profile.newPostText}/>}/>
+                           store={store}
+                           newPostText={profilePage.profile.newPostText}/>}/>
                 <Route exact path="/message"
                        render={() => <DialogsPage
                            // addMessage={props.store.addMessage.bind(store)}
-                           dispatch={props.store.dispatch.bind(store)}
-                           messages={messages}/>}/>
+                           store={store}
+                           messages={dialogsPage.messages}
+                           newMessageText={dialogsPage.newMessageText}/>}/>
             </div>
         </BrowserRouter>
     );

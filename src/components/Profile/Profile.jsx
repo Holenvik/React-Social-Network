@@ -2,24 +2,20 @@ import React from "react";
 import profile from "./Profile.module.css";
 import MyPosts from "./MyPosts/Post/Post";
 import Info from "./MyInfo/Info";
+import {addPostCreator, updateNewPostTextCreator} from "../../redux/ProfilePageReducer";
 
-const Profile = ({contact, ...props}) => {
+const Profile = ({contact, store}) => {
     debugger;
     let {posts, newPostText} = contact;
     let newPostElement = React.createRef();
     let addPost = () => {
-        let action = {
-            type: 'ADD-POST'
-        };
-        props.dispatch(action)
+        let action = addPostCreator();
+        store.dispatch(action);
     };
-    let onPostText = () => {
+    let updatePostText = () => {
         let newText = newPostElement.current.value;
-        let action = {
-            type: 'UPDATE-NEW-POST-TEXT',
-            text: newText
-        };
-        props.dispatch(action);
+        let action = updateNewPostTextCreator(newText);
+        store.dispatch(action);
     };
     
     return (
@@ -36,7 +32,7 @@ const Profile = ({contact, ...props}) => {
                     className={profile.post__input}
                     type="text"
                     ref={newPostElement}
-                    onChange={onPostText}
+                    onChange={updatePostText}
                     value={newPostText}
                 />
                 <div className={profile.post__button}>
