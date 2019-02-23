@@ -2,12 +2,13 @@ import React, {Component} from "react";
 import n from "./Navbar.module.css";
 import {NavLink} from "react-router-dom";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 
 const NavList = props => {
     let {item, link} = props;
     return (
         <div className={n.nav__link}>
-            <NavLink to={link} activeClassName={n.active} exact>
+            <NavLink to={link} activeClassName={n.active}>
                 {item}
             </NavLink>
         </div>
@@ -24,12 +25,6 @@ const FriendsList = props => {
 };
 
 const Nav = ({navbar, friends}) => {
-        // let navbar = {name: "Profile", link: "/profile"},
-        // {name: "Message", link: "/message"},
-        // {name: "News", link: "/news"},
-        // {name: "Music", link: "/music"},
-        // {name: "Settings", link: "/settings"}
-        // ];
     let NavItems = navbar.map(el => <NavList item={el.name}
                                              link={el.link}/>);
     let FriendItem = friends.map(el => (
@@ -50,4 +45,11 @@ Nav.propTypes = {
     navbar: PropTypes.array
 };
 
-export default Nav;
+let mapStateToDispatch = (state) => {
+    return {
+        navbar: state.navbarBlock.navbar,
+        friends: state.navbarBlock.friends,
+    }
+}
+
+export default connect(mapStateToDispatch, null, null, {pure: false})(Nav);

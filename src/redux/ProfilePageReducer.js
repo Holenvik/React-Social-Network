@@ -1,40 +1,42 @@
 let initialState = {
-    profile: {
-        name: "Kirill",
-        birthday: "17 march",
-        city: "Minsk",
-        education: "BSUIR",
-        link: "vk.com/kirill_fedosow",
-        picture:
-            "https://png.icons8.com/color/1600/circled-user-male-skin-type-1-2.png",
-        posts: [
-            {id: 1, message: "Hi, how are you?"},
-            {id: 2, message: "Are you ready?"},
-        ],
-        newPostText: null
-    },
+    name: "Kirill",
+    birthday: "17 march",
+    city: "Minsk",
+    education: "BSUIR",
+    link: "vk.com/kirill_fedosow",
+    picture:
+        "https://png.icons8.com/color/1600/circled-user-male-skin-type-1-2.png",
+    posts: [
+        {id: 1, message: "Hi, how are you?"},
+        {id: 2, message: "Are you ready?"},
+    ],
+    newPostText: null,
+
 };
 
 const ADD_POST = "network/profile/ADD-POST";
 const UPDATE_NEW_POST_TEXT = "network/profile/UPDATE-NEW-POST-TEXT";
 
 const ProfilePageReducer = (state = initialState, action) => {
-    let newState = {...state};
+    let copyState;
 
     switch (action.type) {
         case ADD_POST:
+            copyState = {...state};
             let newPost = {
-                id: 3,
-                message: newState.profile.newPostText
+                id: 5,
+                message: state.newPostText
             };
-            newState.profile.posts.push(newPost);
-            newState.profile.newPostText = "";
-            return newState
+            copyState.posts.push(newPost);
+            copyState.newPostText = "";
+            return copyState;
+
         case UPDATE_NEW_POST_TEXT:
-            newState.profile.newPostText = action.text;
-            return newState
+            copyState = {...state};
+            copyState.newPostText = action.text;
+            return copyState;
         default:
-            return newState
+            return state
     }
 };
 

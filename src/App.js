@@ -2,39 +2,31 @@ import React from "react";
 import "./App.css";
 import Head from "./components/Header/Header";
 import Nav from "./components/Navbar/Navbar";
-import Profile from "./components/Profile/Profile";
-import DialogsPage from "./components/Dialogs/DialogsPage";
 import {Route, BrowserRouter} from "react-router-dom";
+import {connect} from "react-redux";
+import ProfileContainer from "./components/Profile/ProfileContainer";
+import DialogPageContainer from "./components/Dialogs/DialogPageContainer";
 
-const App = props => {
+const App = () => {
     // debugger;
-    let {state, store} = props;
-    let {dialogsPage, navbarBlock, profilePage} = state;
     return (
         <BrowserRouter>
             <div className="app-wrapper">
                 <Head/>
 
-                <Nav
-                    navbar={navbarBlock.navbar}
-                    friends={navbarBlock.friends}/>
+                <Nav/>
 
-                <Route path="/profile"
-                       render={() => <Profile
-                           contact={profilePage.profile}
-                           // addPost={props.store.addPost.bind(store)}
-                           // updatePostText={props.store.updateNewPostText.bind(store)}
-                           store={store}
-                           newPostText={profilePage.profile.newPostText}/>}/>
-                <Route exact path="/message"
-                       render={() => <DialogsPage
-                           // addMessage={props.store.addMessage.bind(store)}
-                           store={store}
-                           messages={dialogsPage.messages}
-                           newMessageText={dialogsPage.newMessageText}/>}/>
+                <Route path="/profile" component={ProfileContainer}/>
+
+                <Route exact path="/message" component={DialogPageContainer}/>
             </div>
         </BrowserRouter>
     );
 };
 
-export default App;
+const mapStateToProps = (state) => {
+    return {
+        state: state
+    }
+};
+export default connect(mapStateToProps, null)(App);

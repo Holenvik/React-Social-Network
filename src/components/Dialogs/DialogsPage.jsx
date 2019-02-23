@@ -1,7 +1,7 @@
 import React from "react";
 import dialog from "./DialogsPage.module.css";
 import Friend from "./Friend/Friend";
-import {addMessageCreator, updateNewMessageTextCreator} from "../../redux/DialogsPageReducer";
+
 
 const Message = ({message}) => {
     return (
@@ -10,22 +10,24 @@ const Message = ({message}) => {
         </div>
     );
 };
+
+
 const DialogsPage = props => {
     debugger;
-    let {messages, store, newMessageText} = props;
+    let {messages, newMessageText} = props;
+
+    let {textChange, addMessage} = props;
+
     let messageItem = messages.map(el => <Message message={el.content}/>);
+
     let textMessage = React.createRef();
 
-    let newMessage = () => {
-        let text = textMessage.current.value;
-        let action = addMessageCreator(text);
-        store.dispatch(action);
-    };
+    // let newMessage = () => {
+    //     addMessage()
+    // };
 
-    let onTextChange = () => {
-        let text = textMessage.current.value;
-        let action = updateNewMessageTextCreator(text);
-        store.dispatch(action)
+    let onTextChange = (e) => {
+        textChange(e.target.value)
     };
 
     return (
@@ -57,7 +59,7 @@ const DialogsPage = props => {
                         />
                     </div>
                     <div className={dialog.dialog_input_button}>
-                        <button onClick={newMessage}><span>Отправить</span></button>
+                        <button onClick={addMessage}><span>Отправить</span></button>
                     </div>
                 </div>
             </div>

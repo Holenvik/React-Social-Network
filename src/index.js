@@ -7,30 +7,27 @@ import {combineReducers, createStore} from "redux";
 import DialogPageReducer from "./redux/DialogsPageReducer";
 import NavbarReducer from "./redux/NavbarReducer";
 import ProfilePageReducer from "./redux/ProfilePageReducer";
+import {Provider} from "react-redux";
 
-let combinedReducers = combineReducers({
+const combinedReducers = combineReducers({
     dialogsPage: DialogPageReducer,
     navbarBlock: NavbarReducer,
     profilePage: ProfilePageReducer,
 });
 
 
-let store = createStore(combinedReducers);
+const store = createStore(combinedReducers);
 
-store.subscribe(() => {
-    let state = store.getState();
-    rerenderPage(state)
-});
 
-const rerenderPage = () => {
-    ReactDOM.render(
-        <App state={store.getState()}
-             store={store}/>,
-        document.getElementById("root")
-    );
-};
+ReactDOM.render(
+    <Provider store={store}>
+            <App/>
+    </Provider>,
+    document.getElementById("root")
+);
 
-rerenderPage(store);
+
+// rerenderPage(store);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

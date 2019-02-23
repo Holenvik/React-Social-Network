@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import profile from "./Info.module.css";
+import {connect} from "react-redux";
 
 const Info = ({ contact }) => {
-  // debugger;
   return (
     <div className={profile.content__profile}>
       <div className={profile.profile__photo}>
@@ -23,4 +23,11 @@ const Info = ({ contact }) => {
   );
 };
 
-export default Info;
+
+const mapStateToProps = (state) => {
+    return {
+        contact: state.profilePage,
+    }
+};
+
+export default connect(mapStateToProps, null)(Info);

@@ -47,24 +47,27 @@ const ADD_MESSAGE = "network/dialog/ADD-MESSAGE";
 const UPDATE_NEW_MESSAGE_TEXT = "network/dialog/UPDATE-NEW-MESSAGE-TEXT";
 
 const DialogPageReducer = (state = initialState, action) => {
-    let newState = {...state};
+    let copyState;
 
     switch (action.type) {
+
         case ADD_MESSAGE:
+            copyState = {...state};
             let newMessage = {
                 id: 7,
-                content: newState.newMessageText
+                content: state.newMessageText
             };
-            newState.messages.push(newMessage);
-            newState.newMessageText = "";
-            return newState;
+            copyState.messages.push(newMessage);
+            copyState.newMessageText = "";
+            return copyState;
 
         case UPDATE_NEW_MESSAGE_TEXT:
-            newState.newMessageText = action.text;
-            return newState;
+            copyState = {...state};
+            copyState.newMessageText = action.text;
+            return copyState;
 
         default:
-            return newState
+            return state;
     }
 };
 
@@ -75,10 +78,9 @@ export const updateNewMessageTextCreator = (text) => {
     }
 };
 
-export const addMessageCreator = (text) => {
+export const addMessageCreator = () => {
     return {
         type: ADD_MESSAGE,
-        text: text
     }
 };
 

@@ -1,21 +1,16 @@
 import React from "react";
 import profile from "./Profile.module.css";
-import MyPosts from "./MyPosts/Post/Post";
+import MyPosts from "./MyPosts/Post";
 import Info from "./MyInfo/Info";
 import {addPostCreator, updateNewPostTextCreator} from "../../redux/ProfilePageReducer";
 
-const Profile = ({contact, store}) => {
-    debugger;
+const Profile = ({contact, addPost, updatePostText}) => {
     let {posts, newPostText} = contact;
-    let newPostElement = React.createRef();
-    let addPost = () => {
-        let action = addPostCreator();
-        store.dispatch(action);
+    let onAddPost = () => {
+        addPost()
     };
-    let updatePostText = () => {
-        let newText = newPostElement.current.value;
-        let action = updateNewPostTextCreator(newText);
-        store.dispatch(action);
+    let onUpdatePostText = (e) => {
+        updatePostText(e.target.value)
     };
     
     return (
@@ -24,24 +19,23 @@ const Profile = ({contact, store}) => {
                 <span>Profile</span>
             </div>
             <div className={profile.content__profile}>
-                <Info contact={contact}/>
+                <Info />
             </div>
             <div className={profile.post}>
                 <p>My Posts</p>
                 <input
                     className={profile.post__input}
                     type="text"
-                    ref={newPostElement}
-                    onChange={updatePostText}
+                    onChange={onUpdatePostText}
                     value={newPostText}
                 />
                 <div className={profile.post__button}>
-                    <button onClick={addPost}>
+                    <button onClick={onAddPost}>
                         <span>Send</span>
                     </button>
                 </div>
                 <div className={profile.post__added}>
-                    <MyPosts posts={posts} picture={contact.picture}/>
+                    <MyPosts/>
                 </div>
             </div>
         </div>

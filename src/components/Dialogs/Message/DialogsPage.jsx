@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import dialog from "./../DialogsPage.module.css";
 
 const Message = ({message}) => {
