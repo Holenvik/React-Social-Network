@@ -1,13 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import {combineReducers, createStore} from "redux";
 import DialogPageReducer from "./redux/DialogsPageReducer";
 import NavbarReducer from "./redux/NavbarReducer";
 import ProfilePageReducer from "./redux/ProfilePageReducer";
 import {Provider} from "react-redux";
+import {BrowserRouter} from "react-router-dom";
+import App from "./App";
 
 const combinedReducers = combineReducers({
     dialogsPage: DialogPageReducer,
@@ -21,8 +22,11 @@ const store = createStore(combinedReducers);
 
 ReactDOM.render(
     <Provider store={store}>
-            <App/>
-    </Provider>,
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </Provider>
+    ,
     document.getElementById("root")
 );
 
