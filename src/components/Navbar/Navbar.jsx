@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import n from "./Navbar.module.css";
 import {NavLink, withRouter} from "react-router-dom";
 import PropTypes from "prop-types";
@@ -50,6 +50,6 @@ let mapStateToProps = (state) => {
         navbar: state.navbarBlock.navbar,
         friends: state.navbarBlock.friends,
     }
-}
+};
 
 export default withRouter(connect(mapStateToProps, null)(Nav));

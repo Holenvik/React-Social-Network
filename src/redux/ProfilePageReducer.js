@@ -10,7 +10,7 @@ let initialState = {
         {id: 1, message: "Hi, how are you?"},
         {id: 2, message: "Are you ready?"},
     ],
-    newPostText: null,
+    newPostText: "",
 
 };
 
@@ -22,12 +22,13 @@ const ProfilePageReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case ADD_POST:
+            debugger
             copyState = {...state};
             let newPost = {
                 id: 5,
                 message: state.newPostText
             };
-            copyState.posts.push(newPost);
+            copyState.posts.unshift(newPost);
             copyState.newPostText = "";
             return copyState;
 

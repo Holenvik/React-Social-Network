@@ -2,10 +2,9 @@ import React from "react";
 import profile from "./Profile.module.css";
 import MyPosts from "./MyPosts/Post";
 import Info from "./MyInfo/Info";
-import {addPostCreator, updateNewPostTextCreator} from "../../redux/ProfilePageReducer";
 
 const Profile = ({contact, addPost, updatePostText}) => {
-    let {posts, newPostText} = contact;
+    let {newPostText} = contact;
     let onAddPost = () => {
         addPost()
     };

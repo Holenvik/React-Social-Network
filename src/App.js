@@ -2,32 +2,26 @@ import React from "react";
 import "./App.css";
 import Head from "./components/Header/Header";
 import Nav from "./components/Navbar/Navbar";
-import {Route, withRouter} from "react-router-dom";
-import {connect} from "react-redux";
+import {Route} from "react-router-dom";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import DialogPageContainer from "./components/Dialogs/DialogPageContainer";
+import FriendsPage from "./components/Friends/FriendsPage";
 
 const App = () => {
     // debugger;
     return (
+        <div className="app-wrapper">
+            <Head/>
 
-            <div className="app-wrapper">
-                <Head/>
+            <Nav/>
 
-                <Nav/>
+            <Route path="/profile" component={ProfileContainer}/>
 
-                <Route path="/profile" component={ProfileContainer}/>
+            <Route exact path="/message" component={DialogPageContainer}/>
 
-                <Route exact path="/message" component={DialogPageContainer}/>
-            </div>
-
+            <Route exact path="/friends" component={FriendsPage}/>
+        </div>
     );
 };
 
-const mapStateToProps = (state) => {
-    return {
-        state: state
-    }
-};
-
-export default withRouter(connect(mapStateToProps, null)(App));
+export default App;

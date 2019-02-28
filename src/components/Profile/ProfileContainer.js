@@ -6,7 +6,7 @@ let mapStateToProps = (state) => {
     return {
         contact: state.profilePage
     }
-}
+};
 
 let mapDispatchToProps = (dispatch) => {
     return {
@@ -18,9 +18,9 @@ let mapDispatchToProps = (dispatch) => {
         }
 
     }
-}
+};
 
-let ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(Profile)
+let ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(Profile);
 
 export default ProfileContainer
 

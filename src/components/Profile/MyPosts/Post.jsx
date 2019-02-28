@@ -1,6 +1,7 @@
-import React, {Component} from "react";
+import React from "react";
 import Post from "./Post.module.css";
 import {connect} from "react-redux";
+import {withRouter} from "react-router-dom";
 
 const PostItems = ({post, picture}) => {
     return (
@@ -28,4 +29,4 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps)(MyPosts);
+export default withRouter(connect(mapStateToProps)(MyPosts));
