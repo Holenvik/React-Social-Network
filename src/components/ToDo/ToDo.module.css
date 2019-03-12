@@ -1,0 +1,35 @@
+.todo {
+    display: flex;
+    flex-direction: column;
+}
+
+.todo_status {
+
+}
+
+.todo_list {
+
+}
+
+.todo_list_item:first-child {
+    border: #03a9f4 2px solid;
+    font-family: Roboto;
+}
+
+.todo_list_item {
+    border-right: #03a9f4 2px solid;
+    border-left: #03a9f4 2px solid;
+    border-bottom: #03a9f4 2px solid;
+    font-family: Roboto;
+}
+
+.todo_input {
+    height: 50px;
+    background: #eeeeee;
+    border: 0;
+    font-family: Roboto;
+    font-size: 14pt;
+    color: #03a9f4;
+    padding: 0 10px;
+    margin: 15px 0;
+}

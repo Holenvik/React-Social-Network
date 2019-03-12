@@ -6,23 +6,28 @@ import App from "./App";
 
 import "./index.css";
 
-import {combineReducers, createStore} from "redux";
+import {applyMiddleware, combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 
 import DialogPageReducer from "./redux/DialogsPageReducer";
 import NavbarReducer from "./redux/NavbarReducer";
 import ProfilePageReducer from "./redux/ProfilePageReducer";
 import FriendsPageReducer from "./redux/FriendsPageReducer";
+import thunk from "redux-thunk";
+import ToDoPageReducer from "./redux/ToDoPageReducer";
+import LoginReducer from "./redux/LoginReducer";
 
 const combinedReducers = combineReducers({
     dialogsPage: DialogPageReducer,
     navbarBlock: NavbarReducer,
     profilePage: ProfilePageReducer,
-    friendsPage: FriendsPageReducer
+    friendsPage: FriendsPageReducer,
+    toDoPage: ToDoPageReducer,
+    loginPage: LoginReducer,
 });
 
 
-const store = createStore(combinedReducers);
+const store = createStore(combinedReducers, applyMiddleware(thunk));
 
 
 ReactDOM.render(
@@ -35,7 +40,4 @@ ReactDOM.render(
     document.getElementById("root")
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.unregister();

@@ -1,23 +1,13 @@
+import {statuses} from "./STATUSES";
+import axiosInstance from "../DAL/AxiosInstance";
+
 const SET_USERS = 'SN/FRIENDS/SET_USERS';
 const SET_STATUS = 'SN/FRIENDS/SET_STATUS';
 
-export const setUsers = (users) => ({type: SET_USERS, users: users});
-export const setStatus = (status) => ({type: SET_STATUS, status});
-
-export const statuses = {
-    NOT_INITIALIZED: 'NOT_INITIALIZED',
-    ERROR: 'ERROR',
-    INPROGRESS: 'INPROGRESS',
-    SUCCESS: 'SUCCESS'
-};
-
-
 let initialState = {
     status: statuses.NOT_INITIALIZED,
-    users: []
+    users: [],
 };
-
-
 
 const FriendsPageReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -29,7 +19,6 @@ const FriendsPageReducer = (state = initialState, action) => {
 
         }
         case SET_USERS: {
-            console.log(action.users);
             return {
                 ...state,
                 users: action.users
@@ -40,5 +29,19 @@ const FriendsPageReducer = (state = initialState, action) => {
         }
     }
 };
+
+export const getUsersThunk = () => (dispatch) => {
+    dispatch(setStatusAC(statuses.INPROGRESS));
+    axiosInstance
+        .get("users")
+        .then((result) => result.data.totalCount)
+        .then((totalCount) => axiosInstance.get(`users?count=${totalCount}`))
+        .then((result) => {
+            dispatch(setStatusAC(statuses.SUCCESS));
+            dispatch(setUsersAC(result.data.items));
+        })
+};
+export const setUsersAC = (users) => ({type: SET_USERS, users});
+export const setStatusAC = (status) => ({type: SET_STATUS, status});
 
 export default FriendsPageReducer;
