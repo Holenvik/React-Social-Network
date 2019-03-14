@@ -2,10 +2,15 @@ import React from "react"
 import {connect} from "react-redux";
 import {LoginThunk} from "../../redux/LoginReducer";
 import {statuses} from "../../redux/STATUSES";
+import {Redirect} from "react-router-dom";
 
 let LoginPage = (props) => {
     let {login} = props;
-    let {status, message} = props;
+    let {status, isAuth} = props;
+
+    if (isAuth) {
+        return <Redirect to="/profile"/>
+    }
 
     let loginRef = React.createRef();
     let passwordRef = React.createRef();
@@ -47,7 +52,7 @@ let LoginPage = (props) => {
 };
 
 let mapStateToProps = (state) => ({
-    //isAuth: state.loginPage.isAuth,
+    isAuth: state.auth.isAuth,
     status: state.loginPage.status,
     message: state.loginPage.message,
     captcha: state.loginPage.captchaUrl,

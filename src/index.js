@@ -16,6 +16,7 @@ import FriendsPageReducer from "./redux/FriendsPageReducer";
 import thunk from "redux-thunk";
 import ToDoPageReducer from "./redux/ToDoPageReducer";
 import LoginReducer from "./redux/LoginReducer";
+import AuthReducer from "./redux/AuthReducer";
 
 const combinedReducers = combineReducers({
     dialogsPage: DialogPageReducer,
@@ -24,6 +25,7 @@ const combinedReducers = combineReducers({
     friendsPage: FriendsPageReducer,
     toDoPage: ToDoPageReducer,
     loginPage: LoginReducer,
+    auth: AuthReducer,
 });
 
 

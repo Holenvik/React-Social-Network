@@ -1,5 +1,6 @@
 import {statuses} from "./STATUSES";
 import * as axios from "axios";
+import axiosInstance from "../DAL/AxiosInstance";
 
 const SET_TASK = "network/ToDo/SET-TASK";
 const SET_STATUS = "network/ToDo/SET-STATUS";
@@ -30,13 +31,14 @@ let ToDoPageReducer = (state = initialState, action) => {
         case ADD_TASK: {
             let task = {
                 title: state.newTextTitle
-            }
+            };
             return {
                 ...state,
                 tasks: [...state.tasks, task]
             }
         }
         case ADD_NEW_TITLE_TEXT: {
+
             return {
                 ...state,
                 newMessageText: action.titleText
@@ -51,16 +53,32 @@ let ToDoPageReducer = (state = initialState, action) => {
 
 
 export let getTasksThunk = () => (dispatch) => {
+    dispatch(setStatusAC(statuses.INPROGRESS));
     axios
-        .get('https://repetitora.net/api/JS/Tasks?widgetId=74629')
+        .get('https://repetitora.net/api/JS/Tasks?widgetId=5399')
         .then(result => {
-            console.log(result)
+            debugger
+            dispatch(setTasksAC(result.data));
+            dispatch(setStatusAC(statuses.SUCCESS))
         })
-}
+};
+
+export let addTaskThunk = (title) => (dispatch) => {
+    dispatch(setStatusAC(statuses.INPROGRESS));
+    axios
+        .post('https://repetitora.net/api/JS/Tasks', {
+            widgetId: 5399,
+            title
+        })
+        .then(result => {
+                dispatch(setStatusAC(statuses.SUCCESS))
+            }
+        )
+};
 
 export let setTasksAC = (tasks) => ({type: SET_TASK, tasks});
-export let setStatusAC = (status) => ({type: SET_TASK, status});
-export let addTaskAC = () => ({type: ADD_TASK});
+export let setStatusAC = (status) => ({type: SET_STATUS, status});
+export let addTaskAC = (title) => ({type: ADD_TASK, title});
 export let addNewTitleTextAC = (titleText) => ({type: ADD_NEW_TITLE_TEXT, titleText});
 
 export default ToDoPageReducer

@@ -1,5 +1,6 @@
 import axiosInstance from "../DAL/AxiosInstance";
 import {statuses} from "./STATUSES";
+import {setIsAuth} from "./AuthReducer";
 
 const SET_STATUS = 'network/set-status';
 const SET_MESSAGE = 'network/set-message';
@@ -30,7 +31,7 @@ const LoginReducer = (state = initialState, action) => {
 };
 
 
-export const LoginThunk = (login, password, rememberMe, captcha) => (dispatch) => {
+export const LoginThunk = (login, password, rememberMe, isAuth) => (dispatch) => {
     dispatch(setStatus(statuses.INPROGRESS));
     axiosInstance
         .post("auth/login", {
@@ -40,7 +41,7 @@ export const LoginThunk = (login, password, rememberMe, captcha) => (dispatch) =
         }).then(result => {
             if (result.data.resultCode === 0) {
                 dispatch(setStatus(statuses.SUCCESS));
-                alert("Вы вошли");
+                dispatch(setIsAuth(true))
             } else {
                 dispatch(setStatus(statuses.ERROR));
                 dispatch(setMessage(result.data.messages[0]));

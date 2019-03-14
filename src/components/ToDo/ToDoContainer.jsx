@@ -1,13 +1,15 @@
 import React, {Component} from "react"
 import ToDo from "./ToDo";
 import {connect} from "react-redux";
-import {addNewTitleTextAC, getTasksThunk} from "../../redux/ToDoPageReducer";
+import {addNewTitleTextAC, addTaskThunk, getTasksThunk} from "../../redux/ToDoPageReducer";
 
 class ToDoContainer extends Component {
 
     componentDidMount() {
         this.props.getTasks()
     }
+
+
 
     render() {
         return <ToDo {...this.props} />
@@ -29,6 +31,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         getTasks: () => {
             dispatch(getTasksThunk())
+        },
+        addTask: (title) => {
+            dispatch(addTaskThunk(title))
         }
     }
 };
