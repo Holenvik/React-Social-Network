@@ -32,8 +32,8 @@ const mapDispatchToProps = (dispatch) => {
         getTasks: () => {
             dispatch(getTasksThunk())
         },
-        addTask: (title) => {
-            dispatch(addTaskThunk(title))
+        addTask: () => {
+            dispatch(addTaskThunk())
         }
     }
 };

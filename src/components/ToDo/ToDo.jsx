@@ -10,6 +10,7 @@ let Tasks = (task) => {
 };
 
 let ToDo = (props) => {
+    debugger
     let {tasks, status, newTextTitle} = props;
     let {addNewTitleText, addTask} = props;
     let textTitle = React.createRef();
@@ -17,7 +18,8 @@ let ToDo = (props) => {
         addNewTitleText(e.target.value)
     };
     let onClickAddTask = () => {
-        addTask(textTitle.current.value)
+
+        addTask()
     };
     return (
         <div className={style.todo}>

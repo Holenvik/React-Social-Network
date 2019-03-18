@@ -41,7 +41,7 @@ let ToDoPageReducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                newMessageText: action.titleText
+                newTextTitle: action.titleText
             }
         }
         default: {
@@ -57,21 +57,25 @@ export let getTasksThunk = () => (dispatch) => {
     axios
         .get('https://repetitora.net/api/JS/Tasks?widgetId=5399')
         .then(result => {
-            debugger
+            debugger;
             dispatch(setTasksAC(result.data));
             dispatch(setStatusAC(statuses.SUCCESS))
         })
 };
 
-export let addTaskThunk = (title) => (dispatch) => {
+export let addTaskThunk = () => (dispatch, getState) => {
+    let state = getState();
+    let title = state.toDoPage.newTextTitle;
+
     dispatch(setStatusAC(statuses.INPROGRESS));
     axios
         .post('https://repetitora.net/api/JS/Tasks', {
             widgetId: 5399,
             title
         })
-        .then(result => {
-                dispatch(setStatusAC(statuses.SUCCESS))
+        .then(res => {
+                dispatch(setStatusAC(statuses.SUCCESS));
+                dispatch(addTaskAC(res.data.task.title))
             }
         )
 };
