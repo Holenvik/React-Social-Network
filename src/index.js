@@ -11,12 +11,13 @@ import {Provider} from "react-redux";
 
 import DialogPageReducer from "./redux/DialogsPageReducer";
 import NavbarReducer from "./redux/NavbarReducer";
-import ProfilePageReducer from "./redux/ProfilePageReducer";
+import ProfilePageReducer, {setMeCreator} from "./redux/ProfilePageReducer";
 import FriendsPageReducer from "./redux/FriendsPageReducer";
 import thunk from "redux-thunk";
 import ToDoPageReducer from "./redux/ToDoPageReducer";
 import LoginReducer from "./redux/LoginReducer";
 import AuthReducer from "./redux/AuthReducer";
+import axiosInstance from "./DAL/AxiosInstance";
 
 const combinedReducers = combineReducers({
     dialogsPage: DialogPageReducer,
@@ -28,18 +29,34 @@ const combinedReducers = combineReducers({
     auth: AuthReducer,
 });
 
-
 const store = createStore(combinedReducers, applyMiddleware(thunk));
 
-
 ReactDOM.render(
-    <Provider store={store}>
-        <BrowserRouter>
-            <App/>
-        </BrowserRouter>
-    </Provider>
+    <>
+     loading...
+    </>
     ,
     document.getElementById("root")
 );
+
+axiosInstance
+    .get('auth/me')
+    .then(result => {
+        store.dispatch(setMeCreator(result.data.data))
+    })
+    .then( () => {
+        ReactDOM.render(
+            <Provider store={store}>
+                <BrowserRouter>
+                    <App/>
+                </BrowserRouter>
+            </Provider>
+            ,
+            document.getElementById("root")
+        );
+    });
+
+
+
 
 serviceWorker.unregister();

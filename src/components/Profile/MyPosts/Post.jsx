@@ -16,8 +16,9 @@ const PostItems = ({post, picture}) => {
     );
 };
 
-const MyPosts = ({posts, picture}) => {
-    let Post = posts.map(el => <PostItems post={el.message} picture={picture}/>);
+const MyPosts = (props) => {
+    let {posts, picture} = props;
+    let Post = posts.map(el => <PostItems key={el.id} post={el.message} picture={picture}/>);
     return <div className={Post.post}>{Post}</div>;
 };
 

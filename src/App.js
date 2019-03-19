@@ -2,7 +2,8 @@ import React from "react";
 import "./App.css";
 import Nav from "./components/Navbar/Navbar";
 import {Route} from "react-router-dom";
-import ProfileContainer from "./components/Profile/ProfileContainer";
+
+import ProfilePageContainer from "./components/Profile/ProfileContainer"
 import DialogPageContainer from "./components/Dialogs/DialogPageContainer";
 import LoginPage from "./components/Login/LoginPage";
 import FriendsPageContainer from "./components/Friends/FriendsPageContainer";
@@ -16,7 +17,7 @@ const App = () => {
 
             <Nav/>
 
-            <Route path="/profile" component={ProfileContainer}/>
+            <Route path="/user/:userID" component={ProfilePageContainer}/>
 
             <Route exact path="/message" component={DialogPageContainer}/>
 
@@ -27,6 +28,7 @@ const App = () => {
             <Route exact path="/todo" component={ToDoContainer}/>
 
             <Route exact path="/login" component={LoginPage}/>
+
         </div>
     );
 };

@@ -21,7 +21,6 @@ const AuthReducer = (state = initialState, action) => {
             }
         }
         case SET_USER_INFO: {
-            debugger
             return {
                 ...state,
                 userInfo: {
