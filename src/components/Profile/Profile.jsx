@@ -1,5 +1,5 @@
 import React from "react";
-import profile from "./Profile.module.css";
+import style from "./Profile.module.css";
 import MyPosts from "./MyPosts/Post";
 import Info from "./MyInfo/Info";
 
@@ -31,50 +31,53 @@ const Profile = (props) => {
 
     if (profileInfo) {
         return (
-            <div className={profile.content}>
-                <div className={profile.content__title}>
+            <div className={style.content}>
+                <div className={style.content__title}>
                     <span>Profile</span>
                 </div>
-                <div className={profile.content__profile}>
+                <div className={style.content__profile}>
                     <Info/>
                 </div>
-                <div>
-                    {isOwner && <span onClick={onEditClick}>Edit</span>}
+                <div className={style.social__edit}>
+                    {isOwner && <button onClick={onEditClick}>Edit</button>}
                 </div>
-                <div>
+                <div className={style.social}>
                     {
                         Object.keys(profileInfo.contacts).map(key => {
-                            return <div key={key}>
-                                <b>{key}: {editMode ? <input value={profileInfo.contacts[key]}
-                                                             type="text"
-                                                             onChange={(e) => {
-                                                                 let newValue = e.target.value;
-                                                                 onContactChange(newValue, key)
-                                                             }}/> :
-                                    <span>{profileInfo.contacts[key]}</span>}
-                                </b>
+                            return <div className={style.social__items} key={key}>
+                                <b>{key.toUpperCase()}:</b> {editMode ? <input value={profileInfo.contacts[key]}
+                                                                               type="text"
+                                                                               onChange={(e) => {
+                                                                                   let newValue = e.target.value;
+                                                                                   onContactChange(newValue, key)
+                                                                               }}/> :
+                                <span>{profileInfo.contacts[key]}</span>}
+
                             </div>
                         })
                     }
                 </div>
-                {editMode && <button onClick={onSaveClick}>Save</button>}
-                <div className={profile.post}>
+                <div className={style.social__button}>
+                    {editMode && <button onClick={onSaveClick}>Save</button>}
+                </div>
+                {isOwner && <div className={style.post}>
                     <p>My Posts</p>
                     <input
-                        className={profile.post__input}
+                        className={style.post__input}
                         type="text"
                         onChange={onUpdatePostText}
                         value={newPostText}
                     />
-                    <div className={profile.post__button}>
+                    <div className={style.post__button}>
                         <button onClick={onAddPost}>
                             <span>Send</span>
                         </button>
                     </div>
-                    <div className={profile.post__added}>
+                    <div className={style.post__added}>
                         <MyPosts/>
                     </div>
-                </div>
+                </div>}
+
             </div>
         )
     } else {

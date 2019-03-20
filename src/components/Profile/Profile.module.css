@@ -1,65 +1,124 @@
 .content {
-  grid-area: c;
-  padding: 18px 0 0 20px;
+    grid-area: c;
+    padding: 18px 0 0 20px;
 }
+
 .content__title {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  grid-area: title;
-  color: #03a9f4;
-  font-size: 18pt;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    grid-area: title;
+    color: #03a9f4;
+    font-size: 18pt;
 }
 
 .post {
-  display: flex;
-  flex-direction: column;
-  color: gray;
-  font-family: Roboto;
-  font-size: 14pt;
+    display: flex;
+    flex-direction: column;
+    color: gray;
+    font-family: Roboto;
+    font-size: 14pt;
 }
+
 .post p {
-  color: #03a9f4;
-  font-size: 18pt;
+    color: #03a9f4;
+    font-size: 18pt;
 }
+
 .post__input {
-  height: 100px;
-  background: #eeeeee;
-  border: 0;
-  font-family: Roboto;
-  font-size: 14pt;
-  color: #03a9f4;
-  padding: 0 10px;
+    height: 100px;
+    background: #eeeeee;
+    border: 0;
+    font-family: Roboto;
+    font-size: 14pt;
+    color: #03a9f4;
+    padding: 0 10px;
 }
+
 .post__button {
-  display: flex;
-  justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
 }
+
 .post__button button {
-  height: 50px;
-  width: 100px;
-  margin: 20px 0;
-  background: #03a9f4;
-  color: #eeeeee;
-  border: 0;
-  font-size: 14pt;
+    height: 50px;
+    width: 100px;
+    margin: 20px 0;
+    background: #03a9f4;
+    color: #eeeeee;
+    border: 0;
+    font-size: 14pt;
 }
+
 .post__added {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
+
 .post__message {
-  display: flex;
-  align-items: center;
-  margin: 0 100px;
+    display: flex;
+    align-items: center;
+    margin: 0 100px;
 }
+
 .post__photo img {
-  width: 80px;
-  height: auto;
+    width: 80px;
+    height: auto;
 }
+
 .post__one {
-  display: flex;
+    display: flex;
 }
+
 .post__two {
-  display: flex;
+    display: flex;
+}
+
+
+.social {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    border: 2px solid #03a9f4;
+    padding: 20px;
+}
+
+.social__items {
+    display: flex;
+    flex-direction: column;
+}
+
+.social__items b {
+    color: #03a9f4;
+}
+.social__items span {
+    color: gray;
+}
+.social__button{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.social__button button{
+    height: 50px;
+    width: 100px;
+    margin: 20px 0;
+    background: #03a9f4;
+    color: #eeeeee;
+    border: 0;
+    font-size: 14pt;
+}
+.social__edit{
+    display: flex;
+    justify-content: center;;
+}
+
+.social__edit button{
+    height: 30px;
+    width: 70px;
+    margin: 10px 0;
+    background: #03a9f4;
+    color: #eeeeee;
+    border: 0;
+    font-size: 14pt;
 }

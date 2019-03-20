@@ -17,7 +17,9 @@ const App = () => {
 
             <Nav/>
 
-            <Route path="/user/:userID" component={ProfilePageContainer}/>
+            <Route exact path="/profile" component={ProfilePageContainer} />
+
+            <Route path="/user/:id" component={ProfilePageContainer}/>
 
             <Route exact path="/message" component={DialogPageContainer}/>
 

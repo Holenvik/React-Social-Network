@@ -1,10 +1,19 @@
 import React from 'react';
 import style from "./FriendsPage.module.css"
+import {Redirect, withRouter} from "react-router-dom";
 
 let Friend = (props) => {
     let {user} = props;
+    // let goToUser = () => {
+    //     debugger
+    //    return <Redirect to={`/user/${user.id}`} />
+    // };
+
     return (
-        <div>
+        <div onClick={() => {
+            debugger
+            return <Redirect to={`/user/${user.id}`} />
+        }}>
             <img alt={`${user.name}`}
                  src={user.photos.small == null ? "https://via.placeholder.com/100" : user.photos.small}/>
             <div>{user.name}</div>
@@ -15,7 +24,6 @@ let Friend = (props) => {
 
 
 const FriendsPage = (props) => {
-
     if (!props.users.length) {
         return <div>Users not found</div>
     }
@@ -25,4 +33,4 @@ const FriendsPage = (props) => {
     </div>
 };
 
-export default FriendsPage;
+export default withRouter(FriendsPage);

@@ -80,14 +80,31 @@ const ProfilePageReducer = (state = initialState, action) => {
 
 export const updateUserInfoThunk = () => (dispatch, getState) => {
     let state = getState();
-    let profileInfo = state.profilePage.profileInfo;
-    console.log(profileInfo)
+    let profileInfo = {...state.profilePage.profileInfo};
+    console.log(profileInfo);
     axiosInstance
-        .put('profile', profileInfo)
+        .put('profile',
+            {
+                "aboutMe": "я круто чувак",
+                "contacts": {
+                    facebook: profileInfo.contacts.facebook,
+                    github: profileInfo.contacts.github,
+                    instagram: profileInfo.contacts.instagram,
+                    mainLink: profileInfo.contacts.mainLink,
+                    twitter: profileInfo.contacts.twitter,
+                    vk: profileInfo.contacts.vk,
+                    website: profileInfo.contacts.website,
+                    youtube: profileInfo.contacts.youtube,
+                },
+                "lookingForAJob": true,
+                "lookingForAJobDescription": 'Ищу работу, знаю это это и это',
+                "fullName": "holenvik"
+            }
+        )
         .then(result => {
-            console.log(result)
+
         })
-}
+};
 
 export const getUserInfoThunk = (userIdFromUrl) => (dispatch) => {
     axiosInstance

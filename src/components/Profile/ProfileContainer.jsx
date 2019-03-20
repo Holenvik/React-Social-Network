@@ -12,7 +12,7 @@ import {withRouter} from "react-router-dom";
 class ProfilePageContainer extends React.Component {
 
     componentDidMount() {
-
+        debugger
         let userIdFromUrl = this.props.match.params.userID;
         this.props.getUserInfo(userIdFromUrl);
         if (this.props.contact.me.id === +userIdFromUrl) {
