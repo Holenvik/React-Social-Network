@@ -1,16 +1,16 @@
 import React from "react";
 import {connect} from "react-redux";
-import Head from "./Header";
+import Header from "./Header";
 import {logOutThunk, meThunk} from "../../redux/AuthReducer";
 
 class HeaderContainer extends React.Component {
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.me()
     }
 
     render() {
-        return <Head {...this.props}/>
+        return <Header {...this.props}/>
     }
 }
 

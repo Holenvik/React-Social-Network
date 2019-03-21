@@ -1,8 +1,8 @@
 import React from "react"
 import {connect} from "react-redux";
-import {LoginThunk} from "../../redux/LoginReducer";
 import {statuses} from "../../redux/STATUSES";
 import {Redirect} from "react-router-dom";
+import {LoginThunk} from "../../redux/AuthReducer";
 
 let LoginPage = (props) => {
     let {login} = props;

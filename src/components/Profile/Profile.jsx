@@ -4,6 +4,7 @@ import MyPosts from "./MyPosts/Post";
 import Info from "./MyInfo/Info";
 
 const Profile = (props) => {
+    console.log(props)
     let {contact} = props;
     let {
         addPost, updatePostText, setEditMode,

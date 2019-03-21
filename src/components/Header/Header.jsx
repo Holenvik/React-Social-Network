@@ -1,21 +1,23 @@
 import React from "react";
-import Header from './Header.module.css';
+import style from './Header.module.css';
 import {NavLink} from "react-router-dom";
 
-const Head = (props) => {
+const Header = (props) => {
+    // debugger
     let {isAuth, userInfo} = props;
     let {logOut} = props;
     let onLogoutClick = () => {
         logOut();
     };
     return (
-        <header className={Header.header}>
+        <header className={style.header}>
             <img alt="header" src="https://angolrahangolva.com/wp-content/uploads/2015/04/ghost_halloween-1969px.png"/>
-            {isAuth && <div className={Header.header_sign_in}>
-                {userInfo.userName} - <span onClick={onLogoutClick}>Log Out</span>
-            </div>} -
-            {!isAuth && <div className={Header.header_sign_in}>
-                <NavLink to="login">Sign In</NavLink>
+            {isAuth && <div className={style.header_sign_in}>
+                {`${userInfo.userName} `}
+                <NavLink to="/login"><span onClick={onLogoutClick}>Log Out</span></NavLink>
+            </div>}
+            {!isAuth && <div className={style.header_sign_in}>
+                <NavLink to="/login">Sign In</NavLink>
             </div>}
 
 
@@ -23,4 +25,4 @@ const Head = (props) => {
     );
 };
 
-export default Head
+export default Header

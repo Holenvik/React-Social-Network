@@ -16,7 +16,7 @@ import FriendsPageReducer from "./redux/FriendsPageReducer";
 import thunk from "redux-thunk";
 import ToDoPageReducer from "./redux/ToDoPageReducer";
 import LoginReducer from "./redux/LoginReducer";
-import AuthReducer from "./redux/AuthReducer";
+import AuthReducer, {setUserInfo} from "./redux/AuthReducer";
 import axiosInstance from "./DAL/AxiosInstance";
 
 const combinedReducers = combineReducers({
@@ -42,7 +42,10 @@ ReactDOM.render(
 axiosInstance
     .get('auth/me')
     .then(result => {
-        store.dispatch(setMeCreator(result.data.data))
+        if (result.data.resultCode === 0){
+            store.dispatch(setUserInfo(result.data.data.id, result.data.data.login, result.data.data.email))
+        }
+
     })
     .then( () => {
         ReactDOM.render(

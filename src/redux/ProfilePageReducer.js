@@ -16,8 +16,8 @@ let initialState = {
 
     profileInfo: null,
     editMode: false,
-    me: false,
-    isOwner: false
+    isOwner: false,
+    status: null,
 };
 
 const ADD_POST = "network/profile/ADD-POST";
@@ -27,6 +27,7 @@ const SET_ME_INFO = "network/profile/SET-ME-INFO";
 const SET_IS_OWNER = "network/profile/SET-IS-OWNER";
 const SET_EDIT_MODE = "network/profile/SET-EDIT-MODE";
 const SET_NEW_PROFILE_INFO = "network/profile/SET-NEW-PROFILE-INFO";
+const SET_STATUS = "network/profile/SET-NEW-PROFILE-INFO";
 
 const ProfilePageReducer = (state = initialState, action) => {
     let copyState;
@@ -122,27 +123,28 @@ export const getMeInfoThunk = () => (dispatch) => {
         });
 };
 
+
 export const setNewProfileInfoCreator = (newValue, contactKey) => {
     return {
         type: SET_NEW_PROFILE_INFO,
         newValue,
         contactKey
     }
-}
+};
 
 export const setEditModeCreator = (bool) => {
     return {
         type: SET_EDIT_MODE,
         bool
     }
-}
+};
 
 export const setIsOwnerCreactor = (bool) => {
     return {
         type: SET_IS_OWNER,
         bool
     }
-}
+};
 
 export const setMeCreator = (me) => {
     return {

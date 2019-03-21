@@ -29,8 +29,6 @@ const App = () => {
 
             <Route exact path="/todo" component={ToDoContainer}/>
 
-            <Route exact path="/login" component={LoginPage}/>
-
         </div>
     );
 };
