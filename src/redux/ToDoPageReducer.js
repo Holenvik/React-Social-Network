@@ -57,7 +57,7 @@ export let getTasksThunk = () => (dispatch) => {
     axios
         .get('https://repetitora.net/api/JS/Tasks?widgetId=5399')
         .then(result => {
-            debugger;
+            // debugger;
             dispatch(setTasksAC(result.data));
             dispatch(setStatusAC(statuses.SUCCESS))
         })

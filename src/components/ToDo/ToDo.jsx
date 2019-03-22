@@ -10,7 +10,6 @@ let Tasks = (task) => {
 };
 
 let ToDo = (props) => {
-    debugger
     let {tasks, status, newTextTitle} = props;
     let {addNewTitleText, addTask} = props;
     let textTitle = React.createRef();

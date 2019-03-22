@@ -11,7 +11,7 @@ import {Provider} from "react-redux";
 
 import DialogPageReducer from "./redux/DialogsPageReducer";
 import NavbarReducer from "./redux/NavbarReducer";
-import ProfilePageReducer, {setMeCreator} from "./redux/ProfilePageReducer";
+import ProfilePageReducer from "./redux/ProfilePageReducer";
 import FriendsPageReducer from "./redux/FriendsPageReducer";
 import thunk from "redux-thunk";
 import ToDoPageReducer from "./redux/ToDoPageReducer";

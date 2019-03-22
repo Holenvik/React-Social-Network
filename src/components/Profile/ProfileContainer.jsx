@@ -21,9 +21,18 @@ class ProfilePageContainer extends React.Component {
             this.props.setEditMode(false);
             this.props.getUserInfo(userIdFromUrl);
         } else if (match.path === "/profile"){
-            debugger
+            //debugger
             userIdFromUrl = this.props.auth.userInfo.userId;
             this.props.setOwner(true);
+            this.props.getUserInfo(userIdFromUrl);
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        let userIdFromUrl;
+        if (this.props.auth.userInfo.userId !== prevProps.auth.userInfo.userId ){
+            this.props.setOwner(true);
+            userIdFromUrl = this.props.auth.userInfo.userId;
             this.props.getUserInfo(userIdFromUrl);
         }
     }
