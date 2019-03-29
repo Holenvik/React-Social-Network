@@ -72,20 +72,33 @@ export const LoginThunk = (login, password, rememberMe, isAuth) => (dispatch) =>
             rememberMe
         }).then(result => {
             if (result.data.resultCode === 0) {
-                axiosInstance
-                    .get('auth/me')
-                    .then(result => {
-                        if (result.data.resultCode === 0) {
-                            dispatch(setIsAuth(true));
-                            dispatch(setUserInfo(result.data.data.id, result.data.data.login, result.data.data.email));
-                        }
-                    })
+                return true
             } else {
                 dispatch(setStatusLogin(statuses.ERROR));
                 dispatch(setMessage(result.data.messages[0]));
             }
         }
     )
+        .then((result) => {
+            let responce = {
+                id: null,
+                login:null,
+                email: null,
+            }
+            if(result){
+                axiosInstance
+                    .get('auth/me')
+                    .then(result => {
+                        if (result.data.resultCode === 0) {
+                            responce.id = result.data.data.id
+                            responce.login = result.data.data.login
+                            responce.email = result.data.data.email
+                            dispatch(setIsAuth(true));
+                            dispatch(setUserInfo(result.data.data.id, result.data.data.login, result.data.data.email));
+                        }
+                    })
+            }
+        })
 };
 
 

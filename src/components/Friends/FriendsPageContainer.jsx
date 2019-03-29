@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 import {connect} from "react-redux";
-import {getUsersThunk} from "../../redux/FriendsPageReducer";
+import {followFriendThunk, friendsSelector, getUsersThunk, unfollowFriendThunk} from "../../redux/FriendsPageReducer";
 import FriendsPage from "./FriendsPage.jsx";
 
 
@@ -18,15 +18,21 @@ class FriendsPageContainer extends Component {
 
 let mapStateToProps = (state) => {
     return {
-        users: state.friendsPage.users,
+        users: friendsSelector(state),
         status: state.friendsPage.status
     }
 };
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        getUsers: () =>{
+        getUsers: () => {
             dispatch(getUsersThunk())
+        },
+        followFriend: (userId) => {
+            dispatch(followFriendThunk(userId))
+        },
+        unfollowFriend: (userId) => {
+            dispatch(unfollowFriendThunk(userId))
         }
     }
 };

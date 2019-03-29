@@ -11,7 +11,6 @@ import {withRouter} from "react-router-dom";
 
 class ProfilePageContainer extends React.Component {
 
-
     componentDidMount() {
         let userIdFromUrl;
         let match = this.props.match;
@@ -20,7 +19,7 @@ class ProfilePageContainer extends React.Component {
             this.props.setOwner(false);
             this.props.setEditMode(false);
             this.props.getUserInfo(userIdFromUrl);
-        } else if (match.path === "/profile"){
+        } else if (match.path === "/profile") {
             //debugger
             userIdFromUrl = this.props.auth.userInfo.userId;
             this.props.setOwner(true);
@@ -30,7 +29,7 @@ class ProfilePageContainer extends React.Component {
 
     componentDidUpdate(prevProps) {
         let userIdFromUrl;
-        if (this.props.auth.userInfo.userId !== prevProps.auth.userInfo.userId ){
+        if (this.props.auth.userInfo.userId !== prevProps.auth.userInfo.userId) {
             this.props.setOwner(true);
             userIdFromUrl = this.props.auth.userInfo.userId;
             this.props.getUserInfo(userIdFromUrl);

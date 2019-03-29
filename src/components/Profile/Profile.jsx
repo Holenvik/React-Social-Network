@@ -53,7 +53,6 @@ const Profile = (props) => {
                                                                                    onContactChange(newValue, key)
                                                                                }}/> :
                                 <span>{profileInfo.contacts[key]}</span>}
-
                             </div>
                         })
                     }
